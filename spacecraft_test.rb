@@ -38,3 +38,6 @@ class SpacecraftTest
     end
   end
 end
+
+# Running the tests
+SpacecraftTest.run_all_tests
