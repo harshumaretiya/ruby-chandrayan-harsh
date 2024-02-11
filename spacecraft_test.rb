@@ -32,6 +32,20 @@ RSpec.describe Spacecraft do
       expect(spacecraft.direction).to eq('W')
     end
   end
+
+  describe 'elevation change' do
+    it 'moves up' do
+      spacecraft = Spacecraft.new(0, 0, 0, 'N')
+      spacecraft.execute_commands(['u'])
+      expect(spacecraft.z).to eq(1)
+    end
+  
+    it 'moves down' do
+      spacecraft = Spacecraft.new(0, 0, 1, 'N')
+      spacecraft.execute_commands(['d'])
+      expect(spacecraft.z).to eq(0)
+    end
+  end
 end
 
 
