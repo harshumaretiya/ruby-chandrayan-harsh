@@ -9,7 +9,9 @@ class Spacecraft
     'N' => { delta: [0, 1, 0], left: 'W', right: 'E' },
     'S' => { delta: [0, -1, 0], left: 'E', right: 'W' },
     'E' => { delta: [1, 0, 0], left: 'N', right: 'S' },
-    'W' => { delta: [-1, 0, 0], left: 'S', right: 'N' }
+    'W' => { delta: [-1, 0, 0], left: 'S', right: 'N' }, 
+    'Up' => { delta: [0, 0, 1] },
+    'Down' => { delta: [0, 0, -1] }
   }.freeze
 
   def execute_commands(commands)
@@ -31,5 +33,15 @@ class Spacecraft
 
   def handle_l
     @direction = DIRECTIONS[@direction][:left]
+  end
+
+  def handle_u; change_elevation('Up'); end
+  def handle_d; change_elevation('Down'); end
+
+  def change_elevation(direction)
+    dx, dy, dz = DIRECTIONS[direction][:delta]
+    @x += dx
+    @y += dy
+    @z += dz
   end
 end
